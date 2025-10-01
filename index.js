@@ -23,26 +23,40 @@ app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
 
-// Timestamp Microservice api endpoint
-app.get("/api/:date?", function (req, res) {
-  let dateString = req.params.date;
-  let date = new Date(dateString);
+// // Timestamp Microservice api endpoint Exercise 1
+// app.get("/api/:date?", function (req, res) {
+//   let dateString = req.params.date;
+//   let date = new Date(dateString);
 
-  // If no date is provided, use current date
-  if (!dateString) {
-    date = new Date();
-  }
-  // If invalid date string, return error
-  if (date.toString() === "Invalid Date" && !/^\d+$/.test(dateString)) {
-    return res.json({ error: "Invalid Date" });
-  }
+//   // If no date is provided, use current date
+//   if (!dateString) {
+//     date = new Date();
+//   }
+//   // If invalid date string, return error
+//   if (date.toString() === "Invalid Date" && !/^\d+$/.test(dateString)) {
+//     return res.json({ error: "Invalid Date" });
+//   }
 
-  if (date.toString() === "Invalid Date") {
-    date = new Date(parseInt(dateString));
+//   if (date.toString() === "Invalid Date") {
+//     date = new Date(parseInt(dateString));
+//   }
+//   res.json({ unix: date.getTime(), utc: date.toUTCString() });
+// });
+
+// User System infos api endpoint Exercise 2
+app.get("/api/:user?", function (req, res) {
+  let user = req.params.user;
+  let userInfo = {
+    ipaddress: req.ip,
+    language: req.headers["accept-language"],
+    software: req.headers["user-agent"]
   }
-  res.json({ unix: date.getTime(), utc: date.toUTCString() });
+  if (!user) {
+    return res.json({ error: "User not passed"});
+  }
+  res.json(userInfo);
+
 });
-
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
