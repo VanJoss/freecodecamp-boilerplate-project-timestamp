@@ -11,21 +11,35 @@
 
    <body>
       <div class="container">
-        <h1>Request Header Parser Microservice</h1>
-
-        <h2>Example Usage:</h2>
+        <h1>URL Shortener Microservice</h1>
+        <main>
+          <h2>Short URL Creation</h2>
+          <p> Example:POST [project_url]/api/shorturl - https://www.google.com </p>
+          <section class="section">
+            <form method="post" action="api/shorturl">
+              <fieldset>
+                <legend>URL Shortener</legend>
+                <label for="url_input">URL:</label>
+                <input id="url_input" type="text" name="url" placeholder="https://www.freecodecamp.org/">
+                <input type="submit" value="POST URL">
+              </fieldset>
+            </form>
+          </section>
+        </main>
+        <h2>
+          Example Usage: 
+        </h2>
         <p>
-          <a href="api/whoami">[base url]/api/whoami</a>
+          <a href="api/shorturl/3">[this_project_url]/api/sorturl/3</a>
         </p>
-
-        <h2>Example Output:</h2>
-        <p>
-          <code>{"ipaddress":"::ffff:159.20.14.100","language":"en-US,en;q=0.5",<br>"software":"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"}</code>
-        </p>
+        <h3>
+          Will Redirect to:
+        </h3>
+        <p>https://forum.freecodecamp.org/</p>
       </div>
       <div class="footer">
         <p>
-          by <a href="https://www.freecodecamp.org">freeCodeCamp</a>
+          By <a href="https://www.freecodecamp.org">freeCodeCamp</a>
         </p>
       </div>
    </body>
